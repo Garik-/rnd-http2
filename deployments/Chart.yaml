@@ -1,0 +1,6 @@
+apiVersion: v2
+name: example-http
+description: A Helm chart for two example-http services
+type: application
+version: 0.1.0
+appVersion: "1.0"
