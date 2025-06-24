@@ -7,9 +7,9 @@ RUN go mod download
 
 COPY main.go ./
 
-RUN go build -o server main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o server main.go
 
-FROM alpine:latest
+FROM scratch
 
 WORKDIR /app
 
