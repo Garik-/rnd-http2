@@ -5,3 +5,5 @@ docker_build('example-http1', './http1', dockerfile='deployments/Dockerfile')
 
 yaml = helm('deployments')
 k8s_yaml(yaml)
+
+k8s_resource('example-http2', port_forwards='8090:8080')

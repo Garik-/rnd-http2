@@ -3,7 +3,9 @@ services:
     image: example-http1
     port: 8080
     host: example-http1.local
+    protocol: http
   - name: example-http2
     image: example-http2
     port: 8080
     host: example-http2.local
+    protocol: h2c
