@@ -2,6 +2,8 @@ services:
   - name: example-http1
     image: example-http1
     port: 8080
+    host: example-http1.local
   - name: example-http2
     image: example-http2
     port: 8080
+    host: example-http2.local

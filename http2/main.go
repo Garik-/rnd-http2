@@ -18,9 +18,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	for name, values := range r.Header {
+		for _, value := range values {
+			log.Printf("%s: %s", name, value)
+		}
+	}
+
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(http.StatusOK)
-	io.WriteString(w, r.Proto+"\n")
+	io.WriteString(w, "v2 "+r.Proto+"\n")
 }
 
 func main() {
