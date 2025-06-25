@@ -1,12 +1,11 @@
 package main
 
 import (
+	"io"
 	"log"
 	"net/http"
 	"time"
 )
-
-var helloWorld = []byte("Hello, HTTP/1.1 world!\n")
 
 const address = ":8080"
 
@@ -18,7 +17,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(http.StatusOK)
-	w.Write(helloWorld)
+	io.WriteString(w, r.Proto+"\n")
 }
 
 func main() {

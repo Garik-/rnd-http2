@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io"
 	"log"
 	"net/http"
 	"time"
@@ -8,8 +9,6 @@ import (
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
 )
-
-var helloWorld = []byte("Hello, HTTP/2.0 world!\n")
 
 const address = ":8080"
 
@@ -21,7 +20,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(http.StatusOK)
-	w.Write(helloWorld)
+	io.WriteString(w, r.Proto+"\n")
 }
 
 func main() {
